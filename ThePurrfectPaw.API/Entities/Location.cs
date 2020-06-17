@@ -18,6 +18,15 @@ namespace ThePurrfectPaw.API.Entities
         [MaxLength(13)]
         public string State { get; set; }
 
+        [Required]
+        public string StateAbbreviation { get; set; }
+
+        [Required]
+        public string Zipcode { get; set; }
+
+        [Required]
+        public string Country { get; set; }
+
         public ICollection<Animal> Animals { get; set; } = new List<Animal>();
     }
 }

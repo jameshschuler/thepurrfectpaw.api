@@ -15,9 +15,9 @@ namespace ThePurrfectPaw.API.Entities
         [MaxLength(100)]
         public string LastName { get; set; }
 
-        [ForeignKey("LocationId")]
-        public Location Location { get; set; }
+        [ForeignKey("ShelterId")]
+        public Shelter Shelter { get; set; }
 
-        public int LocationId { get; set; }
+        public int ShelterId { get; set; }
     }
 }

@@ -4,11 +4,11 @@ using ThePurrfectPaw.API.Services;
 
 namespace ThePurrfectPaw.API.Controllers
 {
-    [Route("api/v1/animal")]
+    [Route("api/v1/animals")]
     [ApiController]
     public class AnimalsController : ControllerBase
     {
-        private readonly IAnimalRepository animalRespository = null;
+        private readonly IAnimalRepository animalRespository;
 
         public AnimalsController(IAnimalRepository repository)
         {
@@ -21,6 +21,12 @@ namespace ThePurrfectPaw.API.Controllers
             var animals = await animalRespository.GetAll();
 
             return Ok(animals);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetByShelter(int shelterId)
+        {
+            return NotFound();
         }
     }
 }
