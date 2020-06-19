@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThePurrfectPaw.API.DbContexts;
 
 namespace ThePurrfectPaw.API.Migrations
 {
     [DbContext(typeof(ThePurrfectPawContext))]
-    partial class ThePurrfectPawContextModelSnapshot : ModelSnapshot
+    [Migration("20200619030439_AddedLocationModel2")]
+    partial class AddedLocationModel2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +134,7 @@ namespace ThePurrfectPaw.API.Migrations
                         {
                             PostingId = 3,
                             IsPublic = false,
-                            PostDate = new DateTime(2020, 6, 18, 23, 9, 39, 709, DateTimeKind.Local).AddTicks(305),
+                            PostDate = new DateTime(2020, 6, 18, 23, 4, 39, 449, DateTimeKind.Local).AddTicks(3744),
                             ShelterId = 1,
                             Title = "Testing Posting 3"
                         });
@@ -181,7 +183,7 @@ namespace ThePurrfectPaw.API.Migrations
 
             modelBuilder.Entity("ThePurrfectPaw.API.Entities.Shelter", b =>
                 {
-                    b.HasOne("ThePurrfectPaw.API.Entities.Location", "Location")
+                    b.HasOne("ThePurrfectPaw.API.Entities.Location", "Locaton")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)

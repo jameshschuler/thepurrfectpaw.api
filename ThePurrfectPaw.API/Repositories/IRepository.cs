@@ -8,9 +8,10 @@ namespace ThePurrfectPaw.API.Services
 {
     public interface IRepository<T> where T : class, IEntity
     {
+        Task<T> GetById( int id );
         Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate, string includeProperties = "");
-        Task<List<T>> GetAll();
-        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate);
+        Task<List<T>> GetAll( string includeProperties = "" );
+        Task<IEnumerable<T>> GetWhere(Expression<Func<T, bool>> predicate, string includeProperties = "" );
         Task<T> Get(int id);
         Task<T> Add(T entity);
         Task<T> Update(T entity);

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ThePurrfectPaw.API.Entities
 {
@@ -10,6 +7,9 @@ namespace ThePurrfectPaw.API.Entities
     {
         [Key]
         public int LocationId { get; set; }
+
+        [Required]
+        public string Address { get; set; }
 
         [Required]
         public string City { get; set; }
@@ -26,7 +26,5 @@ namespace ThePurrfectPaw.API.Entities
 
         [Required]
         public string Country { get; set; }
-
-        public ICollection<Animal> Animals { get; set; } = new List<Animal>();
     }
 }

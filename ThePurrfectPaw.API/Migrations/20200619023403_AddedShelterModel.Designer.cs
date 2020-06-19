@@ -3,83 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThePurrfectPaw.API.DbContexts;
 
 namespace ThePurrfectPaw.API.Migrations
 {
     [DbContext(typeof(ThePurrfectPawContext))]
-    partial class ThePurrfectPawContextModelSnapshot : ModelSnapshot
+    [Migration("20200619023403_AddedShelterModel")]
+    partial class AddedShelterModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ThePurrfectPaw.API.Entities.Location", b =>
-                {
-                    b.Property<int>("LocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(13)")
-                        .HasMaxLength(13);
-
-                    b.Property<string>("StateAbbreviation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Zipcode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LocationId");
-
-                    b.ToTable("Locations");
-
-                    b.HasData(
-                        new
-                        {
-                            LocationId = 1,
-                            City = "Rochester",
-                            Country = "US",
-                            State = "New York",
-                            StateAbbreviation = "NY",
-                            Zipcode = ""
-                        },
-                        new
-                        {
-                            LocationId = 2,
-                            City = "Buffalo",
-                            Country = "US",
-                            State = "New York",
-                            StateAbbreviation = "NY",
-                            Zipcode = ""
-                        },
-                        new
-                        {
-                            LocationId = 3,
-                            City = "Albany",
-                            Country = "US",
-                            State = "New York",
-                            StateAbbreviation = "NY",
-                            Zipcode = ""
-                        });
-                });
 
             modelBuilder.Entity("ThePurrfectPaw.API.Entities.Posting", b =>
                 {
@@ -132,7 +72,7 @@ namespace ThePurrfectPaw.API.Migrations
                         {
                             PostingId = 3,
                             IsPublic = false,
-                            PostDate = new DateTime(2020, 6, 18, 23, 9, 39, 709, DateTimeKind.Local).AddTicks(305),
+                            PostDate = new DateTime(2020, 6, 18, 22, 34, 2, 805, DateTimeKind.Local).AddTicks(1653),
                             ShelterId = 1,
                             Title = "Testing Posting 3"
                         });
@@ -148,16 +88,11 @@ namespace ThePurrfectPaw.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LocationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ShelterId");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("Shelters");
 
@@ -165,7 +100,6 @@ namespace ThePurrfectPaw.API.Migrations
                         new
                         {
                             ShelterId = 1,
-                            LocationId = 1,
                             Name = "Verona Street Animal Society"
                         });
                 });
@@ -173,17 +107,8 @@ namespace ThePurrfectPaw.API.Migrations
             modelBuilder.Entity("ThePurrfectPaw.API.Entities.Posting", b =>
                 {
                     b.HasOne("ThePurrfectPaw.API.Entities.Shelter", "Shelter")
-                        .WithMany()
+                        .WithMany("Postings")
                         .HasForeignKey("ShelterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ThePurrfectPaw.API.Entities.Shelter", b =>
-                {
-                    b.HasOne("ThePurrfectPaw.API.Entities.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

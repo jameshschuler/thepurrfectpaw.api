@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jschuler\\Desktop\\playground\\dotnetcore\\ThePurrfectPaw\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj": {}
+    "C:\\Users\\James\\Dev\\thepurrfectpaw\\thepurrfectpaw.api\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jschuler\\Desktop\\playground\\dotnetcore\\ThePurrfectPaw\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj": {
+    "C:\\Users\\James\\Dev\\thepurrfectpaw\\thepurrfectpaw.api\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jschuler\\Desktop\\playground\\dotnetcore\\ThePurrfectPaw\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj",
+        "projectUniqueName": "C:\\Users\\James\\Dev\\thepurrfectpaw\\thepurrfectpaw.api\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj",
         "projectName": "ThePurrfectPaw.API",
-        "projectPath": "C:\\Users\\jschuler\\Desktop\\playground\\dotnetcore\\ThePurrfectPaw\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj",
-        "packagesPath": "C:\\Users\\jschuler\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jschuler\\Desktop\\playground\\dotnetcore\\ThePurrfectPaw\\ThePurrfectPaw.API\\obj\\",
+        "projectPath": "C:\\Users\\James\\Dev\\thepurrfectpaw\\thepurrfectpaw.api\\ThePurrfectPaw.API\\ThePurrfectPaw.API.csproj",
+        "packagesPath": "C:\\Users\\James\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\James\\Dev\\thepurrfectpaw\\thepurrfectpaw.api\\ThePurrfectPaw.API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\jschuler\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\James\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,9 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/idibilling/_packaging/idibilling/nuget/v3/index.json": {},
-          "https://www.myget.org/F/applicationinsights-sdk-labs/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -43,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.5, )"
@@ -76,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

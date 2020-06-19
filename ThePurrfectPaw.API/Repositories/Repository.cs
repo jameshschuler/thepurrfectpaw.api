@@ -19,6 +19,11 @@ namespace ThePurrfectPaw.API.Services
             this.context = context;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task<TEntity> Add(TEntity entity)
         {
             context.Set<TEntity>().Add(entity);
@@ -26,11 +31,25 @@ namespace ThePurrfectPaw.API.Services
             return entity;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Task<int> CountAll() => context.Set<TEntity>().CountAsync();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public Task<int> CountWhere(Expression<Func<TEntity, bool>> predicate)
             => context.Set<TEntity>().CountAsync(predicate);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<TEntity> Delete(int id)
         {
             var entity = await context.Set<TEntity>().FindAsync(id);
@@ -45,6 +64,12 @@ namespace ThePurrfectPaw.API.Services
             return entity;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="includeProperties"></param>
+        /// <returns></returns>
         public Task<TEntity> FirstOrDefault(Expression<Func<TEntity, bool>> predicate, string includeProperties)
         {
             if (!string.IsNullOrWhiteSpace(includeProperties))
@@ -55,21 +80,59 @@ namespace ThePurrfectPaw.API.Services
             return context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<TEntity> Get(int id)
         {
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeProperties"></param>
+        /// <returns></returns>
+        public async Task<List<TEntity>> GetAll(string includeProperties)
         {
+            if ( !string.IsNullOrWhiteSpace( includeProperties ) )
+            {
+                return await context.Set<TEntity>().Include( includeProperties ).ToListAsync();
+            }
+
             return await context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<TEntity> GetById( int id ) => await context.Set<TEntity>().FindAsync( id );
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="includeProperties"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate, string includeProperties)
         {
+            if ( !string.IsNullOrWhiteSpace( includeProperties ) )
+            {
+                return await context.Set<TEntity>().Where(predicate).Include( includeProperties ).ToListAsync();
+            }
+
             return await context.Set<TEntity>().Where(predicate).ToListAsync();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async Task<TEntity> Update(TEntity entity)
         {
             context.Entry(entity).State = EntityState.Modified;

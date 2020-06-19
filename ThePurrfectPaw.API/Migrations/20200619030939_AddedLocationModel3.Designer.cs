@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThePurrfectPaw.API.DbContexts;
 
 namespace ThePurrfectPaw.API.Migrations
 {
     [DbContext(typeof(ThePurrfectPawContext))]
-    partial class ThePurrfectPawContextModelSnapshot : ModelSnapshot
+    [Migration("20200619030939_AddedLocationModel3")]
+    partial class AddedLocationModel3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

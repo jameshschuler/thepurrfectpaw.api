@@ -1,29 +1,24 @@
-﻿using CourseLibrary.API.DbContexts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ThePurrfectPaw.API.DbContexts;
 using ThePurrfectPaw.API.Entities;
 using ThePurrfectPaw.API.Services;
 
 namespace ThePurrfectPaw.API.Services
 {
-    public interface IAnimalRepository : IRepository<Animal>
+    public interface IPostingsRepository : IRepository<Posting>
     {
-        IEnumerable<Animal> GetByShelter(int shelterId);
+        
     }
 
-    public class AnimalRepository : Repository<Animal, ThePurrfectPawContext>, IAnimalRepository, IDisposable
+    public class PostingsRepository : Repository<Posting, ThePurrfectPawContext>, IPostingsRepository, IDisposable
     {
         private readonly ThePurrfectPawContext _context;
 
-        public AnimalRepository(ThePurrfectPawContext context ) : base(context)
+        public PostingsRepository(ThePurrfectPawContext context ) : base(context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
-
-        public IEnumerable<Animal> GetByShelter(int shelterId)
-        {
-            return null;
         }
 
         /*        public void AddCourse(Guid authorId, Course course)
