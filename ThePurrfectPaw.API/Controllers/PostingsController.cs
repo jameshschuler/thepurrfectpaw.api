@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ThePurrfectPaw.API.Models.Request;
 using ThePurrfectPaw.API.Models.Response;
 using ThePurrfectPaw.API.Services;
 
@@ -23,9 +24,9 @@ namespace ThePurrfectPaw.API.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<PostingDto>>> GetPostings()
+        public async Task<ActionResult<IEnumerable<PostingDto>>> GetPostings( [FromQuery] PostingsResourceParameters parameters )
         {
-            var postings = await _postingsService.GetAll();
+            var postings = await _postingsService.GetAll( parameters );
 
             return Ok( _mapper.Map<IEnumerable<PostingDto>>( postings ) );
         }

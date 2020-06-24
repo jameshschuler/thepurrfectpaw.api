@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThePurrfectPaw.API.DbContexts;
 
 namespace ThePurrfectPaw.API.Migrations
 {
     [DbContext(typeof(ThePurrfectPawContext))]
-    partial class ThePurrfectPawContextModelSnapshot : ModelSnapshot
+    [Migration("20200624002432_AnimalUpdate2")]
+    partial class AnimalUpdate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,7 +205,7 @@ namespace ThePurrfectPaw.API.Migrations
                             PostingId = 3,
                             AnimalId = 3,
                             IsPublic = false,
-                            PostDate = new DateTime(2020, 6, 23, 21, 7, 9, 302, DateTimeKind.Local).AddTicks(6761),
+                            PostDate = new DateTime(2020, 6, 23, 20, 24, 31, 889, DateTimeKind.Local).AddTicks(9924),
                             ShelterId = 1,
                             Title = "Testing Posting 3"
                         },
@@ -214,7 +216,7 @@ namespace ThePurrfectPaw.API.Migrations
                             IsPublic = true,
                             PostDate = new DateTime(2020, 6, 20, 12, 30, 33, 0, DateTimeKind.Unspecified),
                             ShelterId = 2,
-                            Title = "Test Run 123"
+                            Title = "Testing Posting 4"
                         });
                 });
 

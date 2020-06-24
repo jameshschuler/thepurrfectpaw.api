@@ -97,12 +97,17 @@ namespace ThePurrfectPaw.API.Services
         /// <returns></returns>
         public async Task<List<TEntity>> GetAll(string includeProperties)
         {
+            var query = context.Set<TEntity>().AsQueryable();
+            
             if ( !string.IsNullOrWhiteSpace( includeProperties ) )
             {
-                return await context.Set<TEntity>().Include( includeProperties ).ToListAsync();
+                foreach ( var include in includeProperties.Split( "," ) )
+                {
+                    query = query.Include( include );
+                }
             }
 
-            return await context.Set<TEntity>().ToListAsync();
+            return await query.ToListAsync();
         }
 
         /// <summary>
@@ -112,6 +117,27 @@ namespace ThePurrfectPaw.API.Services
         /// <returns></returns>
         public async Task<TEntity> GetById( int id ) => await context.Set<TEntity>().FindAsync( id );
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="includeProperties"></param>
+        /// <returns></returns>
+        public IQueryable<TEntity> GetWhere( string includeProperties )
+        {
+            var query = context.Set<TEntity>().AsQueryable();
+
+            if ( !string.IsNullOrWhiteSpace( includeProperties ) )
+            {
+                foreach ( var include in includeProperties.Split( "," ) )
+                {
+                    query = query.Include( include );
+                }
+            }
+
+            return query;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -120,12 +146,17 @@ namespace ThePurrfectPaw.API.Services
         /// <returns></returns>
         public async Task<IEnumerable<TEntity>> GetWhere(Expression<Func<TEntity, bool>> predicate, string includeProperties)
         {
+            var query = context.Set<TEntity>().AsQueryable();
+
             if ( !string.IsNullOrWhiteSpace( includeProperties ) )
             {
-                return await context.Set<TEntity>().Where(predicate).Include( includeProperties ).ToListAsync();
+                foreach ( var include in includeProperties.Split( "," ) )
+                {
+                    query = query.Include( include );
+                }
             }
 
-            return await context.Set<TEntity>().Where(predicate).ToListAsync();
+            return await query.Where( predicate ).ToListAsync();
         }
 
         /// <summary>

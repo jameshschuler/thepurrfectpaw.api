@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200623234003_LocationUpdate.cs" />
+    <Compile Remove="Migrations\20200623234003_LocationUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200623234204_AddedAnimals.cs" />
+    <Compile Remove="Migrations\20200623234204_AddedAnimals.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />

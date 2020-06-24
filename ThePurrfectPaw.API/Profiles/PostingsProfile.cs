@@ -8,7 +8,23 @@ namespace ThePurrfectPaw.API.Profiles
     {
         public PostingsProfile()
         {
-            CreateMap<Posting, PostingDto>();
+            CreateMap<Posting, PostingDto>()
+                .ForMember(
+                    dest => dest.AnimalName,
+                    opt => opt.MapFrom(src => $"{src.Animal.FirstName} {src.Animal.LastName}".Trim())
+                )
+                .ForMember(
+                    dest => dest.LocationId,
+                    opt => opt.MapFrom( src => src.Shelter.Location.LocationId )
+                )
+                .ForMember(
+                    dest => dest.City,
+                    opt => opt.MapFrom( src => src.Shelter.Location.City )
+                )
+                .ForMember(
+                    dest => dest.State,
+                    opt => opt.MapFrom( src => src.Shelter.Location.State )
+                );
         }
     }
 }

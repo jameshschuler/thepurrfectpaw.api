@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThePurrfectPaw.API.DbContexts;
 
 namespace ThePurrfectPaw.API.Migrations
 {
     [DbContext(typeof(ThePurrfectPawContext))]
-    partial class ThePurrfectPawContextModelSnapshot : ModelSnapshot
+    [Migration("20200623234503_AnimalUpdate")]
+    partial class AnimalUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace ThePurrfectPaw.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -57,11 +56,6 @@ namespace ThePurrfectPaw.API.Migrations
                         {
                             AnimalId = 3,
                             FirstName = "Peanut"
-                        },
-                        new
-                        {
-                            AnimalId = 4,
-                            FirstName = "Benjamin"
                         });
                 });
 
@@ -131,16 +125,6 @@ namespace ThePurrfectPaw.API.Migrations
                             State = "New York",
                             StateAbbreviation = "NY",
                             Zipcode = ""
-                        },
-                        new
-                        {
-                            LocationId = 4,
-                            Address = "99 Victor Rd",
-                            City = "Fairport",
-                            Country = "US",
-                            State = "New York",
-                            StateAbbreviation = "NY",
-                            Zipcode = "14450"
                         });
                 });
 
@@ -203,18 +187,9 @@ namespace ThePurrfectPaw.API.Migrations
                             PostingId = 3,
                             AnimalId = 3,
                             IsPublic = false,
-                            PostDate = new DateTime(2020, 6, 23, 21, 7, 9, 302, DateTimeKind.Local).AddTicks(6761),
+                            PostDate = new DateTime(2020, 6, 23, 19, 45, 2, 718, DateTimeKind.Local).AddTicks(4459),
                             ShelterId = 1,
                             Title = "Testing Posting 3"
-                        },
-                        new
-                        {
-                            PostingId = 4,
-                            AnimalId = 4,
-                            IsPublic = true,
-                            PostDate = new DateTime(2020, 6, 20, 12, 30, 33, 0, DateTimeKind.Unspecified),
-                            ShelterId = 2,
-                            Title = "Test Run 123"
                         });
                 });
 
@@ -256,14 +231,6 @@ namespace ThePurrfectPaw.API.Migrations
                             Email = "",
                             LocationId = 1,
                             Name = "Verona Street Animal Society",
-                            PhoneNumber = ""
-                        },
-                        new
-                        {
-                            ShelterId = 2,
-                            Email = "",
-                            LocationId = 4,
-                            Name = "Lollypop Farm",
                             PhoneNumber = ""
                         });
                 });
