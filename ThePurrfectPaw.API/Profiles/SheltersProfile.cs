@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ThePurrfectPaw.API.Entities;
+using ThePurrfectPaw.API.Models.Request;
 using ThePurrfectPaw.API.Models.Response;
 
 namespace ThePurrfectPaw.API.Profiles
@@ -9,6 +10,8 @@ namespace ThePurrfectPaw.API.Profiles
         public SheltersProfile()
         {
             CreateMap<Shelter, ShelterDto>();
+
+            CreateMap<CreateShelterDto, Shelter>();
         }
     }
 }

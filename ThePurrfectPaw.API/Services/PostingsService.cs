@@ -10,6 +10,7 @@ namespace ThePurrfectPaw.API.Services
 {
     public interface IPostingsService 
     {
+        Task<Posting> CreatePosting( Posting posting );
         Task<IEnumerable<Posting>> GetAll( PostingsResourceParameters parameters );
         Task<Posting> GetPosting( int postingId );
     }
@@ -21,6 +22,13 @@ namespace ThePurrfectPaw.API.Services
         public PostingsService( IPostingsRepository postingsRespository )
         {
             _postingsRespository = postingsRespository;
+        }
+
+        public async Task<Posting> CreatePosting( Posting posting )
+        {
+            var createdPosting = await _postingsRespository.Add( posting );
+
+            return createdPosting;
         }
 
         public async Task<IEnumerable<Posting>> GetAll( PostingsResourceParameters parameters )

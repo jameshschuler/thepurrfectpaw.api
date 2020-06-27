@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ThePurrfectPaw.API.Entities;
 using ThePurrfectPaw.API.Models.Request;
 using ThePurrfectPaw.API.Models.Response;
 using ThePurrfectPaw.API.Services;
@@ -31,8 +32,8 @@ namespace ThePurrfectPaw.API.Controllers
             return Ok( _mapper.Map<IEnumerable<PostingDto>>( postings ) );
         }
 
-        [HttpGet("{postingId}")]
-        public async Task<ActionResult<PostingDto>> GetPosting(int postingId)
+        [HttpGet("{postingId}", Name="GetPosting")]
+        public async Task<ActionResult<PostingDto>> GetPosting( int postingId )
         {
             var posting = await _postingsService.GetPosting( postingId );
 
@@ -42,6 +43,22 @@ namespace ThePurrfectPaw.API.Controllers
             }
 
             return Ok( _mapper.Map<PostingDto>(posting) );
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<PostingDto>> CreatePosting( CreatePostingDto request )
+        {
+            if ( request == null )
+            {
+                return BadRequest();
+            }
+            // TODO: location stuff when creating a shelter
+            // TODO: validation
+            var posting = _mapper.Map<Posting>( request );
+
+            var createdPosting = await _postingsService.CreatePosting( posting );
+
+            return CreatedAtRoute("GetPosting", new { postingId = createdPosting.PostingId } );
         }
     }
 }

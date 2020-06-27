@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ThePurrfectPaw.API.Entities;
+using ThePurrfectPaw.API.Models.Request;
 using ThePurrfectPaw.API.Models.Response;
 
 namespace ThePurrfectPaw.API.Profiles
@@ -25,6 +26,8 @@ namespace ThePurrfectPaw.API.Profiles
                     dest => dest.State,
                     opt => opt.MapFrom( src => src.Shelter.Location.State )
                 );
+
+            CreateMap<CreatePostingDto, Posting>();
         }
     }
 }
