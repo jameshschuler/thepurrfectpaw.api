@@ -52,13 +52,19 @@ namespace ThePurrfectPaw.API.Controllers
             {
                 return BadRequest();
             }
-            // TODO: location stuff when creating a shelter
-            // TODO: validation
+
+            var result = await _postingsService.ValidateCreatePostingRequest( request );
+
+            if ( result != null )
+            {
+                return NotFound( result );
+            }
+            
             var posting = _mapper.Map<Posting>( request );
 
             var createdPosting = await _postingsService.CreatePosting( posting );
 
-            return CreatedAtRoute("GetPosting", new { postingId = createdPosting.PostingId } );
+            return CreatedAtRoute("GetPosting", new { postingId = createdPosting.PostingId }, _mapper.Map<PostingDto>( createdPosting ) );
         }
     }
 }

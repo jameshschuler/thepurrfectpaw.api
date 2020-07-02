@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using ThePurrfectPaw.API.Entities;
 using ThePurrfectPaw.API.Models.Request;
+using ThePurrfectPaw.API.Models.Response;
 
 namespace ThePurrfectPaw.API.Services
 {
@@ -13,6 +14,7 @@ namespace ThePurrfectPaw.API.Services
         Task<Posting> CreatePosting( Posting posting );
         Task<IEnumerable<Posting>> GetAll( PostingsResourceParameters parameters );
         Task<Posting> GetPosting( int postingId );
+        Task<ValidationRequest> ValidateCreatePostingRequest( CreatePostingDto request );
     }
 
     public class PostingsService : IPostingsService
@@ -64,6 +66,11 @@ namespace ThePurrfectPaw.API.Services
         public async Task<Posting> GetPosting( int postingId )
         {
             return await _postingsRespository.GetById( postingId );
+        }
+
+        public async Task<ValidationRequest> ValidateCreatePostingRequest( CreatePostingDto request )
+        {
+            return null;
         }
 
         private async Task<IEnumerable<Posting>> GetPublicPostings(string includeProperties)

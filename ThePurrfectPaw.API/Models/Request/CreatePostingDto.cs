@@ -14,9 +14,12 @@ namespace ThePurrfectPaw.API.Models.Request
         public bool IsPublic { get; set; }
 
         [Required]
-        public CreateAnimalDto Animal { get; set; }
+        public int? AnimalId { get; set; }
 
         [Required]
-        public CreateShelterDto Shelter { get; set; }
+        public int? ShelterId { get; set; }
+
+        [Required]
+        public int? LocationId { get; set; }
     }
 }
